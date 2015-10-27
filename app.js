@@ -10,8 +10,8 @@ var db = require('./db')();
 var report = require('./report')
 var port = 5070;
 
-var fields = ['invite_type','talk_type','event_name','event_location','travel_type','ticket_type','fee','currency','travel_assistance','travel_assistance_by_employer','time_off','speaking_slot','speaking_slot_unit','prep_time','prep_time_unit','experience','gender','expertise','speaking_years','additional_info'];
-var fieldNames =['Invite Type','Talk Type','Event Name','Event Location','Travel Type','Ticket Type','Fee','Currency','Travel Assistance','Travel Assistance by Employer','Time Off','Speaking Slot','Speaking Slot Unit','Prep Time','Prep Time Unit','Experience','Gender','Expertise','Speaking Years','Additional Info'];
+var fields = ['invite_type','talk_type','event_name','event_location','travel_type','ticket_type','fee','currency','travel_assistance','travel_assistance_by_employer','time_off','speaking_slot','speaking_slot_unit','prep_time','prep_time_unit','experience','gender','expertise','speaking_years','event_type','additional_info'];
+var fieldNames =['Invite Type','Talk Type','Event Name','Event Location','Travel Type','Ticket Type','Fee','Currency','Travel Assistance','Travel Assistance by Employer','Time Off','Speaking Slot','Speaking Slot Unit','Prep Time','Prep Time Unit','Experience','Gender','Expertise','Speaking Years','Event Type','Additional Info'];
 
 function submissionDate(){
   var monthNames = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
