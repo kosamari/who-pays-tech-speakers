@@ -147,7 +147,7 @@ function experience(exp){
 
 function aboutSpeaker(gender, speakingYears, unit){
   if(speakingYears){
-    return "I'm a "+gender+' who has speaking for '+ speakingYears + ' ' + checkSingular(speakingYears, unit);
+    return "I'm a "+gender+' who has speaking for '+ speakingYears + ' ' + checkSingular(speakingYears, unit)+'.';
   }
   return null;
 }
