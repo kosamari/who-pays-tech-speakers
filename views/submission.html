@@ -20,12 +20,14 @@
       </header>
       <section class='single-card'>
         <p class="report">{{ report }}</p>
-        <p class="date"><a href="./{{_id}}"><em>Submitted in {{ submitted }}</em></a></p>
+        <p class="date">
+        <a href="./{{_id}}"><em>Submitted in {{ submitted }}</em></a><br>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ tweet }}" data-dnt="true">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
+
       </section>
 
-      <footer>
-        <p>This site was inspired by <a href="http://www.whopaysartists.com/">Who Pays Artists?</a> and built by <a href="https://twitter.com/kosamari">Mariko</a>.  You can download the data in <a href="data.json">JSON</a> or <a href="data.csv">CSV</a> format. Code is under MIT license. <br>I welcome everyone to contribute on <a href="https://github.com/kosamari/who-pays-tech-speakers" target="_blank">GitHub</a>, or fork it to make your own. Follow me on twitter <a href="https://twitter.com/kosamari">@kosamari</a>. Headder image from <a href="https://www.flickr.com/photos/nuc/21419924564/">by Giorgos Giannoutsos</a></p>
-      </footer>
+      {{> footer}}
     </div>
     {{> ga}}
   </body>
