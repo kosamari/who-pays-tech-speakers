@@ -58,6 +58,8 @@ a {
 .form{
   padding:30px;
   background-color:OldLace;
+}
+form{
   line-height: 2em;
 }
 .single-title > a{
@@ -163,6 +165,9 @@ select {
   background: #49A9B9;
   padding:30px;
 }
+#gender{
+  width:100px;
+}
 .report-card{
   padding-top:30px;
 }
@@ -171,6 +176,9 @@ select {
   font-size: 1.5em;
   margin-top: 80px;
   margin-bottom:0px;
+}
+.note{
+  font-size: 0.7em;
 }
 .date{
   font-size: 0.9em;

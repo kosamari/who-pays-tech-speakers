@@ -92,7 +92,7 @@ function speakerBenefits(ticketType, fee, currency){
   var ticket ={
     free: 'The event gave me free ticket',
     discount:'The event gave me discounted ticket to buy',
-    fullprice:'The event asked me to but ticket in full price'
+    fullprice:'The event asked me to buy ticket in full price'
   };
   if(ticketType && fee){
     if(fee === '0'){
@@ -135,7 +135,9 @@ function employer(travelAssistance, timeOff){
   var off = {
     working:'I was working while speaking at the event.',
     paid_timeoff:'I used my PTO to speak.',
-    unpaid_timeoff:'I took unpaid time off to speak.'
+    unpaid_timeoff:'I took unpaid time off to speak.',
+    unemployed:'I was unemployed when I spoke at the event.',
+    student:'I was a student when I spoke at the event.'
   };
   if(travelAssistance && timeOff){
     return 'My employer '+ assistance[travelAssistance] +' my travel expenses, and '+ off[timeOff];
@@ -175,6 +177,12 @@ function aboutSpeaker(gender, speakingYears, unit){
   }
   return '';
 }
+function aboutEvent(type){
+  if(type){
+    return "This was "+type+' event.';
+  }
+  return '';
+}
 
 function also(additionalInfo){
   if(additionalInfo){
@@ -191,6 +199,7 @@ function generate(data){
     employer(data.travel_assistance_by_employer, data.time_off),
     timeCommitment(data.speaking_slot, data.speaking_slot_unit, data.prep_time, data.prep_time_unit,data.experience),
     aboutSpeaker(data.gender, data.speaking_years, data.speaking_years_unit),
+    aboutEvent(data.event_type),
     also(data.additional_info)
   ].filter(function(n){ return n !== ''; });
 }

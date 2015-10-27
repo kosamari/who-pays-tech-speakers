@@ -43,7 +43,12 @@
       </section>
       <section class="form">
         <h2 class="">Share your experience</h2>
-        <p><em>All fields are optional & All submissions are anonymous.</em></p>
+        <p>
+          <em>All fields are <b>optional</b> & All submissions are <b>anonymous</b>.</em><br>
+        </p>
+          <span class="note"><b>Note:</b> Hi! thank for a lot of response and feedback, I know this form does not account for all possible case for speaking. If you feel like you'd like to provide more information please feel free to use <em>Also:</em> section at the bottom(no max char limit).
+          <br>If you like to add more fields in the form, please submit issue on my <a href="https://github.com/kosamari/who-pays-tech-speakers/issues/new" target="_blank">GitHub</a>.</span>
+        
         <form name="submission">
           <p>
           I was 
@@ -80,20 +85,19 @@
           to speak at this event.
           </p>
 
-          <p>
-            The event gave me a
+          <p>I
             <span class="styled-select top-tip" data-tips="How did you get ticket?">
               <select name="ticket_type">
                <option value=""></option>
-                <option value="free">free</option>
-                <option value="discount">discounted</option>
-                <option value="fullprice">full price</option>
+                <option value="free">was given free</option>
+                <option value="discount">bought discount</option>
+                <option value="fullprice">bought full price</option>
               </select>
             </span>
             ticket
-            and paid me
+            and got paid
             <span class="style-input top-tip" data-tips="Only note your honorarium. Leave empty to share your experience only."><input name="fee" id="fee" placeholder="500" type="number" min="0" max="1000000" step="1" /></span>
-            <span class="styled-select top-tip" data-tips="These are the four most commonly traded reserve currencies, please convert other currencies to one of these.">
+            <span class="styled-select top-tip" data-tips="Please convert other currencies to one of these.">
             <select name="currency">
               <option value="USD">&dollar;</option>
               <option value="EUR">&euro;</option>
@@ -122,13 +126,15 @@
               <option value="none">did not cover</option>
             </select>
             </span>
-            my travel expenses. I was 
+            my travel expenses. <br>I was 
             <span class="styled-select top-tip" data-tips="Did you attend the event on your time off ?">
             <select name="time_off">
               <option value=""></option>
               <option value="working">working</option>
               <option value="paid_timeoff">on my paid time off</option>
               <option value="unpaid_timeoff">on my unpaid time off</option>
+              <option value="unemployed">unemployed</option>
+              <option value="student">still a student</option>
             </select>
             </span>
             while attending the event.
@@ -165,20 +171,14 @@
           </p>
 
           <p>I am a
-            <span class="styled-select">
-              <select name="gender">
-                <option value="person">person</option>
-                <option value="woman">woman</option>
-                <option value="man">man</option>
-              </select></span>
+            <span class="style-input"><input type="text" name="gender" id="gender" placeholder="woman" maxlength="50" /></span>
            who has been speaking for <span class="style-input"><input type="number" name="speaking_years" id="speaking_years" placeholder="1" min="0" max="99" step="1" /></span>
             <span class="styled-select">
             <select name="speaking_years_unit">
               <option value="years">years</option>
               <option value="months">months</option>
             </select></span>
-          </p>
-          <p>The event was
+            <br>The event was
             <span class="styled-select">
               <select name="event_type">
                 <option value=""></option>
@@ -188,7 +188,7 @@
           </p>
 
           <p>
-            Also: <span class="style-input"><input type="text" name="additional_info" id="additional_info" placeholder="Share details to help others understand your experience." maxlength="500" /></span>
+            Also: <span class="style-input"><input type="text" name="additional_info" id="additional_info" placeholder="Share details to help others understand your experience." /></span>
           </p>
           <input type="submit" value="Submit" class="submit">
           <span id="message"></span>
