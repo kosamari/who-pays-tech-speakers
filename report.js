@@ -3,7 +3,8 @@ function checkSingular(num, unit){
     years:'year',
     minutes:'minute',
     hours:'hour',
-    days:'day'
+    days:'day',
+    months:'month'
   };
   if(num<=1){
     return singular[unit];
