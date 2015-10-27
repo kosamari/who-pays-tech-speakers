@@ -109,7 +109,7 @@ function speakerBenefits(ticketType, fee, currency){
   }else if(ticketType && !fee){
     return ticket[ticketType] +'.';
   }else{
-    return null;
+    return '';
   }
 }
 
@@ -123,7 +123,7 @@ function speakerTravel(travelAssistance){
   if(travelAssistance){
     return assistance[travelAssistance];
   }
-  return null;
+  return '';
 }
 
 function employer(travelAssistance, timeOff){
@@ -144,7 +144,7 @@ function employer(travelAssistance, timeOff){
   }else if(travelAssistance && !timeOff){
     return 'My employer '+ assistance[travelAssistance] +' my travel expenses.';
   }else{
-    return null;
+    return '';
   }
 }
 
@@ -154,7 +154,7 @@ function experience(exp, singleSentence){
   }else if(exp){
     return ', and I had a '+ exp +' time';
   }
-  return null;
+  return '';
 }
 
 function timeCommitment(speakingSlot, speakingSlotUnit, prepTime, prepTimeUnit, exp){
@@ -173,14 +173,14 @@ function aboutSpeaker(gender, speakingYears, unit){
   if(speakingYears){
     return "I'm a "+gender+' who has been speaking for '+ speakingYears + ' ' + checkSingular(speakingYears, unit)+'.';
   }
-  return null;
+  return '';
 }
 
 function also(additionalInfo){
   if(additionalInfo){
     return 'Also, '+ additionalInfo;
   }
-  return null;
+  return '';
 }
 
 function generate(data){
@@ -192,7 +192,7 @@ function generate(data){
     timeCommitment(data.speaking_slot, data.speaking_slot_unit, data.prep_time, data.prep_time_unit,data.experience),
     aboutSpeaker(data.gender, data.speaking_years, data.speaking_years_unit),
     also(data.additional_info)
-  ].filter(function(n){ return n !== null; });
+  ].filter(function(n){ return n !== ''; });
 }
 
 exports.generate = generate;
