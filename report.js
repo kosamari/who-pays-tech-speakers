@@ -4,7 +4,7 @@ function checkSingular(num, unit){
     minutes:'minute',
     hours:'hour',
     days:'day',
-    months:'month'.
+    months:'month',
     weeks:'week'
   };
   if(num<=1){
