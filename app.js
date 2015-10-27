@@ -1,9 +1,10 @@
+var fs = require('fs');
 var express = require('express');
 var app = express();
 var json2csv = require('json2csv');
-var fs = require('fs');
 var _ = require('underscore');
 var favicon = require('serve-favicon');
+var hbs = require('hbs');
 
 var db = require('./db')();
 var report = require('./report')
@@ -25,7 +26,7 @@ function submissionDate(){
 * express server setup
 */
 app.set('view engine', 'html');
-app.engine('html', require('hbs').__express);
+app.engine('html', hbs.__express);
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 hbs.registerPartial('ga', fs.readFileSync(__dirname + '/views/ga.html', 'utf8'));
 app.use(express.json());
