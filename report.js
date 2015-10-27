@@ -7,7 +7,7 @@ function checkSingular(num, unit){
     months:'month',
     weeks:'week'
   };
-  if(num<=1){
+  if(num===1){
     return singular[unit];
   }
   return unit;
@@ -172,7 +172,9 @@ function timeCommitment(speakingSlot, speakingSlotUnit, prepTime, prepTimeUnit, 
 }
 
 function aboutSpeaker(gender, speakingYears, unit){
-  if(speakingYears){
+  if(!gender){
+    return "I've been speaking for "+ speakingYears + ' ' + checkSingular(speakingYears, unit)+'.';
+  }else if(speakingYears){
     return "I'm a "+gender+' who has been speaking for '+ speakingYears + ' ' + checkSingular(speakingYears, unit)+'.';
   }
   return '';
