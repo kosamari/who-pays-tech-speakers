@@ -27,7 +27,7 @@ function submissionDate(){
 app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
-// add GA!
+hbs.registerPartial('ga', fs.readFileSync(__dirname + '/views/ga.html', 'utf8'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.multipart());
