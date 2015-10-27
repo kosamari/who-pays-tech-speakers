@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Who Pays Speakers?</title>
+    <!-- add some speaking image! -->
+    <!-- <meta property="og:image" content="../img/header.png"/> -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel='stylesheet' href='css/css3-tips.css' />
+    <script type='text/javascript' src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+    <script type='text/javascript' src="javascript/jquery.autocomplete.min.js"></script>
+  </head>
+  <body>
+    <div id="headder"></div>
+    <div class="wrapper">
+      <header id="header">
+      <h1 class="center yellow-shadow">Who Pays Speakers?</h1>
+      </header>
+      <section>
+        <h3 class="center">Speaking at tech conference can be costly.</h3>
+        <p>We (speakers) love giving talk at technical conference, but discussions about money are sometimes taboo because we pretend that passion and exposure should pay the way. While some conferences have "no budget", many offer to cover travel & accommodations or pay honorarium.</p>
+        <p>
+        Let’s help each other sort through some of the confusion, and develop an ongoing dialog about cost of public speaking.</p>
+      </section>
+      <section class="form">
+        <h2 class="">Share your experience</h2>
+        <p><em>All fields are optional & All submissions are anonymous.</em></p>
+        <form name="submission">
+          <p>
+          I was 
+          <span class="styled-select top-tip" data-tips="If you were asked to speak in other way, you can clarify in 'Also' section">
+            <select name="invite_type">
+              <option value=""></option>
+              <option value="invited">invited</option>
+              <option value="cfp">selected from CFP</option>
+              <option value="sponsored">sponsored</option>
+            </select>
+          </span>
+          to
+          <span class="styled-select top-tip" data-tips="Type of speaking">
+            <select name="talk_type">
+              <option value=""></option>
+              <option value="talk">give a talk</option>
+              <option value="panel">be on a panel</option>
+              <option value="workshop">run a workshop</option>
+            </select>
+          </span>
+          at
+          <span class="style-input top-tip" data-tips="This is the conference, event or institution that asked you to speak."><input type="text" name="event_name" id="event_name" placeholder="JSConf" maxlength="80" /></span>
+          in
+          <span class="style-input"><input type="text" name="event_location" id="event_location" placeholder="New York" maxlength="80" /></span>
+          .<br>I traveled
+          <span class="styled-select top-tip" data-tips="How far did you travel?">
+            <select name="travel_type">
+             <option value=""></option>
+              <option value="international">internationally</option>
+              <option value="domestic">to other part of country</option>
+              <option value="local">within my town</option>
+            </select>
+          </span>
+          to speak at this event.
+          </p>
+
+          <p>
+            The event gave me
+            <span class="styled-select top-tip" data-tips="How did you get ticket?">
+              <select name="ticket_type">
+               <option value=""></option>
+                <option value="free">free</option>
+                <option value="discount">discounted</option>
+                <option value="fullprice">full price</option>
+              </select>
+            </span>
+            ticket
+            , and paid me
+            <span class="style-input top-tip" data-tips="Only note your honorarium. Leave empty to share your experience only."><input name="fee" id="fee" placeholder="500" type="number" min="0" max="1000000" step="1" /></span>
+            <span class="styled-select top-tip" data-tips="These are the four most commonly traded reserve currencies, please convert other currencies to one of these.">
+            <select name="currency">
+              <option value="USD">&dollar;</option>
+              <option value="EUR">&euro;</option>
+              <option value="GBP">&pound;</option>
+              <option value="JPY">&yen;</option>
+            </select></span>
+            for my time. <br>
+            My travel and accommodation was
+            <span class="styled-select top-tip" data-tips="Did your or the event pay for the travel?">
+            <select name="travel_assistance">
+              <option value=""></option>
+              <option value="full">fully covered</option>
+              <option value="partial">partially covered</option>
+              <option value="none">not covered</option>
+            </select>
+          </span>
+          by the event.
+          </p>
+          <p>
+            My employer
+            <span class="styled-select top-tip" data-tips="Did your company pay for your travel?">
+            <select name="travel_assistance_by_employer">
+              <option value=""></option>
+              <option value="full">covered all of </option>
+              <option value="partial">covered part of</option>
+              <option value="none">did not cover</option>
+            </select>
+            </span>
+            my travel expemce. I was on
+            <span class="styled-select top-tip" data-tips="Did you attend the event on your time off ?">
+            <select name="time_off">
+              <option value=""></option>
+              <option value="working">my job</option>
+              <option value="paid_timeoff">my paid time off</option>
+              <option value="unpaid_timeoff">my unpaid time off</option>
+            </select>
+            </span>
+            while attending the event.
+          </p>
+
+          <p>
+          My speaking slot was
+          <span class="style-input top-tip" data-tips="Examples: 3 hours workshop, 45 minutes talk"><input type="number" name="speaking_slot" id="speaking_slot" placeholder="20" min="1" max="99" step="1" /></span>
+            <span class="styled-select">
+              <select name="speaking_slot_unit">
+                <option value="minutes"  selected="selected">minutes</option>
+                <option value="hours">hours</option>
+                <option value="days">days</option>
+              </select></span>
+          , and it took me <span class="style-input top-tip" data-tips="How long did it take to prepare?"><input type="number" name="prep_time" id="prep_time" placeholder="2" min="1" max="99" step="1" /></span>
+            <span class="styled-select">
+              <select name="prep_time_unit">
+                <option value="minutes">minutes</option>
+                <option value="hours">hours</option>
+                <option value="days" selected="selected">days</option>
+                <option value="weeks">weeks</option>
+                <option value="months">months</option>
+              </select></span>
+             to prepare.<br>I had a
+            <span class="styled-select top-tip" data-tips="Leave this empty if it was forgettable or 'just okay'.">
+              <select name="experience">
+                <option value=""></option>
+                <option value="unusually good">unusually good</option>
+                <option value="good">good</option>
+                <option value="bad">bad</option>
+                <option value="unusually bad">unusually bad</option>
+              </select></span>
+             experience.
+          </p>
+
+          <p>I am a
+            <span class="styled-select">
+              <select name="gender">
+                <option value="person">person</option>
+                <option value="woman">woman</option>
+                <option value="man">man</option>
+              </select></span>
+           who has been speaking for <span class="style-input"><input type="number" name="speaking_years" id="speaking_years" placeholder="1" min="0" max="99" step="1" /></span>
+            <span class="styled-select">
+            <select name="speaking_years_unit">
+              <option value="years">years</option>
+              <option value="months">months</option>
+            </select></span>
+          </p>
+
+          <p>
+            Also: <span class="style-input"><input type="text" name="additional_info" id="additional_info" placeholder="Share details to help others understand your experience." maxlength="500" /></span>
+          </p>
+          <input type="submit" value="Submit" class="submit">
+          <span id="message"></span>
+        </form>
+      </section>
+
+      <section id="report"></section>
+
+      <footer>
+        <p>This site was inspired by <a href="http://www.whopaysartists.com/">Who Pays Artists?</a> and built by <a href="https://twitter.com/kosamari">Mariko</a>.  You can download the data in <a href="data.json">JSON</a> or <a href="data.csv">CSV</a> format. Code is under MIT license. <br>I welcome everyone to contribute on <a href="https://github.com/kosamari/who-pays-tech-speakers" target="_blank">GitHub</a>, or fork it to make your own. Follow me on twitter <a href="https://twitter.com/kosamari">@kosamari</a>. Headder image from <a href="https://www.flickr.com/photos/nuc/21419924564/">by Giorgos Giannoutsos</a></p>
+      </footer>
+    </div>
+
+    <script type="text/template" class="base">
+    <h2 class="white-font">Learn from the experience of others</h2>
+      <p class="white-font">Here are few reports. If you like to know more, click "Show all" for all <%= length %> reports.</p>
+      <div id='cards'></div>
+      <p class="center showall" id="more">Showall</p>
+    </script>
+    <script type="text/template" class="card">
+      <% _.each(data, function(d) { %>
+        <section class='report-card'>
+          <p class="report"><% _.each(d.report, function(r) { if(r){ %> <%= r %><% };}); %> </p>
+          <p class="date"><a href="./<%= d._id %>"><em>Submitted in <%= d.submitted %></em></a></p>
+        </section>
+      <% }); %>
+    </script>
+
+          <script>
+      // form submission
+      var $form = $('form');
+      var $msg = $('#message')
+      $form.on('submit', function(e){
+        e.preventDefault();
+        var data = $form.serializeArray()
+        var count = data.map(function(d){
+            if(d.value){
+              return 1
+            }else{
+              return 0
+            }
+          }).reduce(function(p,n){ return p+n})
+        if(count<5){
+          $msg.html('Please fill out at least one field');
+          return
+        }else{
+          $.post( "./submit", $form.serialize()).error(function() {
+            $msg.html('Oops! some error! could not send your submission');
+          }).success(function(data){
+            $msg.html('Thanks for sharing! <a href="/'+data.id+'">This submission</a> was anonymously added to the database.');
+            $form.each(function(){
+              this.reset();
+            });
+          });
+        }
+      });
+
+
+    var data, subset, remain;
+    var basetemplate = _.template($( 'script.base' ).html());
+    var cardtemplate = _.template($( 'script.card' ).html());
+
+    function renderReports(){
+      var count = data.length;
+      $('#report').append(basetemplate({length:data.length}));
+      $('#cards').append(cardtemplate({data:subset}));
+    }
+
+    function renderAllReports(){
+      $('#cards').append(cardtemplate({data:remain}));
+      $('#more').remove();
+    }
+
+    function setupAutoComplete(){
+      ['event_name', 'event_location'].forEach(function(x) {
+        $('#'+x).autocomplete({
+            lookup: _.uniq(_.compact(_.pluck(data, x)))
+        });
+      });
+    }
+
+    $.getJSON('data.json', function(d) {
+      data = d;
+      subset = _.sample(data, 6);
+      var subsetIds = _.pluck(subset,'_id');
+      remain = _.filter(data, function(d){
+        if(_.indexOf(subsetIds, d._id)<0){return d;}
+      });
+      renderReports();
+      setupAutoComplete();
+
+      $('#more').on('click', function(){
+         renderAllReports();
+      });
+    });
+
+    </script>
+  </body>
+</html>

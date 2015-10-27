@@ -1,0 +1,16 @@
+{
+  "name": "Who-pays-speakers",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bunyan": "^1.5.1",
+    "express": "3.4.8",
+    "hbs": "^3.1.1",
+    "json2csv": "^2.2.1",
+    "mongodb": "^2.0.46",
+    "serve-favicon": "^2.3.0",
+    "underscore": "^1.6.0"
+  }
+}

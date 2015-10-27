@@ -1,0 +1,80 @@
+/**
+ * CSS3 Tips v1.0.1
+ *
+ * A stylesheet for creating tooltips without using anything other than CSS3.
+ *
+ * created by c.bavota
+ * released under GPL v2
+ *
+ * March 21st, 2014
+ */
+[data-tips] {
+	position: relative;
+	text-decoration: none;
+}
+
+	[data-tips]:after,
+	[data-tips]:before {
+	    position: absolute;
+	    z-index: 100;
+		opacity: 0;
+	}
+
+		[data-tips]:after {
+			content: attr(data-tips);
+			height: 25px;
+			line-height: 25px;
+			padding: 0 10px;
+			font-size: 12px;
+			text-align: center;
+			color: #fff;
+			background: #222;
+			border-radius: 5px;
+			text-shadow: 0 0 5px #000;
+			-moz-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+			-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);
+			box-shadow: 0 0 5px rgba(0,0,0,0.3);
+			white-space: nowrap;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		[data-tips]:before {
+			content: "";
+			width: 0;
+			height: 0;
+			border-width: 6px;
+			border-style: solid;
+		}
+
+			[data-tips]:hover:after,
+			[data-tips]:hover:before {
+				opacity: 1;
+			}
+
+/* Top tips */
+[data-tips].top-tip:after,
+[data-tips].top-tip:before {
+    -webkit-transition: bottom 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    -moz-transition: bottom 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    transition: bottom 0.25s ease-in-out, opacity 0.25s ease-in-out;
+	bottom: 90%;
+	left: -9999px;
+	margin-bottom: 12px;
+}
+
+	[data-tips].top-tip:before {
+		border-color: #222 transparent transparent transparent;
+		margin-bottom: 0;
+	}
+
+	[data-tips].top-tip:hover:after,
+	[data-tips].top-tip:hover:before {
+		bottom: 100%;
+		left: 0;
+	}
+
+	[data-tips].top-tip:hover:before {
+		left: 15px;
+	}

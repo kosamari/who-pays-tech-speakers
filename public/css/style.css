@@ -1,0 +1,211 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  background-color: #FFFFFF;
+  color:#333333;
+}
+
+h1{
+  font-family: 'Raleway',sans-serif;
+  font-weight: 100;
+  font-size: 3em;
+}
+
+h2{
+  font-family: 'Raleway',sans-serif;
+  font-weight: 100;
+  font-size: 2em;
+}
+h3{
+  font-family: 'Raleway',sans-serif;
+  font-weight: 100;
+  font-size: 1.5em;
+}
+a {
+  color:#49A9B9;
+}
+.wrapper{
+  width:900px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+}
+
+.blue-font {
+  color:#00B2F2;
+}
+.white-font {
+  color:#FFFFFF;
+}
+
+.yellow-shadow{
+  text-shadow: 3px 3px #F9C132;
+}
+.pink-shadow{
+  text-shadow: 3px 3px #F8555B;
+}
+.blue-shadow{
+  text-shadow: 3px 3px #49A9B9;
+}
+
+.center{
+  text-align: center;
+}
+
+.form{
+  padding:30px;
+  background-color:OldLace;
+  line-height: 2em;
+}
+.single-title > a{
+  text-decoration: none;
+  color:#333;
+}
+.single-card{
+  padding:30px;
+  background-color:OldLace;
+  line-height: 2em;
+}
+
+.single-card > p.report{
+  font-size: 1.5em;
+  margin-bottom:0px;
+}
+form > p{
+  padding-bottom: 15px;
+}
+
+#headder{
+  background: url(/img/headder.jpg) repeat top center fixed; 
+  height:100px;
+}
+
+footer > p{
+  font-size: 12px;
+  text-align: center;
+}
+
+
+
+select, input {
+  font-size: 20px;
+}
+
+.style-input{
+  border-bottom: 2px solid rgb(215, 215, 215);
+  background-color: white;
+}
+input {
+  padding: 0px 10px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  border: none;
+  background: transparent;
+  color: #333;
+  margin: 0;
+  overflow: hidden;
+}
+
+
+.styled-select {
+  border-bottom: 2px solid rgb(215, 215, 215);
+  background-color: white;
+  color: #333;
+  margin: 0;
+  overflow: hidden;
+  margin-right: 5px;
+}
+select {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color:#333;
+  background: transparent;
+  padding: 5px;
+  line-height: 1;
+  border: 0;
+  height: 30px;
+}
+
+.submit {
+  font-size: 26px;
+  color: white;
+  border: 3px solid rgb(255, 255, 255);
+  background-color: orange;
+  margin: .5em 0;
+  cursor: pointer;
+}
+.submit:hover{
+  border: 3px solid orange;
+}
+
+#message{
+  padding-left:10px;
+}
+#event_name{
+  width:140px;
+}
+#event_location{
+  width:130px;
+}
+#fee{
+  width:60px;
+}
+#prep_time{
+  width:60px;
+}
+#additional_info{
+  width:770px;
+}
+#report{
+  background: #49A9B9;
+  padding:30px;
+}
+.report-card{
+  padding-top:30px;
+}
+.report-card > p.report{
+  color:#fff;
+  font-size: 1.5em;
+  margin-top: 80px;
+  margin-bottom:0px;
+}
+.date{
+  font-size: 0.9em;
+  margin-top:0px;
+  text-align: right;
+}
+.report-card > p.date > a{
+  color:orange;
+  font-weight: 500;
+  /*font-weight: 500;*/
+}
+.showall{
+  font-family: 'Raleway',sans-serif;
+  padding:8px;
+  font-size: 1.1em;
+  background-color: orange;
+  color:white;
+  cursor: pointer;
+}
+.autocomplete-suggestions {
+  font-size: 20px;
+  border: 1px solid #999;
+  background: #FFF;
+  cursor: default;
+  overflow: auto;
+}
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.autocomplete-selected {
+  background: #F0F0F0;
+}
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: rgb(215, 100, 0);
+}
