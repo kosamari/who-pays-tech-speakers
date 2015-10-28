@@ -22,7 +22,7 @@ function location(loc){
 function eventDetail(inviteType,talkType,eventName,eventLocation,travelType){
   var invite = {
     invited:'invited',
-    cfp:'selected from CFP',
+    cfp:'proposed an idea',
     sponsored:'sponsored'
   };
   var type = {
