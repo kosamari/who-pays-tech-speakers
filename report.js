@@ -90,9 +90,9 @@ function travelDistance(travelType, separateSentence, separateSentence2){
 
 function speakerBenefits(ticketType, fee, currency){
   var ticket ={
-    free: 'The event gave me free ticket',
-    discount:'The event gave me discounted ticket to buy',
-    fullprice:'The event asked me to buy ticket in full price'
+    free: 'The event gave me a free ticket',
+    discount:'The event offered me a discounted ticket to buy',
+    fullprice:'The event asked me to buy a ticket at full price'
   };
   if(ticketType && fee){
     if(fee === '0'){
@@ -116,8 +116,8 @@ function speakerBenefits(ticketType, fee, currency){
 
 function speakerTravel(travelAssistance){
   var assistance ={
-    full:'All of my travel and accommodation were covered by the event.',
-    partial: 'The event assisted part of my travel and accommodation.',
+    full:'My travel and accommodation was fully covered by the event.',
+    partial: 'The event assisted with part of my travel and accommodation.',
     none:'The event did not pay for my travel and accommodation.'
   };
   if(travelAssistance){
