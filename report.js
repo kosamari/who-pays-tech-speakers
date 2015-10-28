@@ -21,9 +21,9 @@ function location(loc){
 }
 function eventDetail(inviteType,talkType,eventName,eventLocation,travelType){
   var invite = {
-    invited:'invited',
+    invited:'was invited',
     cfp:'proposed an idea',
-    sponsored:'sponsored'
+    sponsored:'was sponsored'
   };
   var type = {
     talk:'to speak',
@@ -41,7 +41,7 @@ function eventDetail(inviteType,talkType,eventName,eventLocation,travelType){
     workshop:' to run a workshop'
   };
   if(inviteType && talkType && eventName){
-    return 'I was ' +invite[inviteType]+' '+ type[talkType] +' at '+ eventName + location(eventLocation)+travelDistance(travelType)+'.';
+    return 'I ' +invite[inviteType]+' '+ type[talkType] +' at '+ eventName + location(eventLocation)+travelDistance(travelType)+'.';
   }else if(!inviteType && talkType&& eventName){
     return  type2[talkType]+' at '+ eventName + location(eventLocation)+travelDistance(travelType)+'.';
   }else if(!inviteType && !talkType && eventName){
@@ -51,11 +51,11 @@ function eventDetail(inviteType,talkType,eventName,eventLocation,travelType){
   }else if(!inviteType && talkType && !eventName && !travelType){
     return type2[talkType]+ location(eventLocation) +'.';
   }else if(inviteType && talkType && !eventName){
-    return 'I was '+invite[inviteType]+'  '+type[talkType] + location(eventLocation)+travelDistance(travelType)+'.';
+    return 'I '+invite[inviteType]+'  '+type[talkType] + location(eventLocation)+travelDistance(travelType)+'.';
   }else if(inviteType && !talkType && !eventName){
-    return 'I was '+invite[inviteType]+' to speak' + location(eventLocation)+travelDistance(travelType)+'.';
+    return 'I '+invite[inviteType]+' to speak' + location(eventLocation)+travelDistance(travelType)+'.';
   }else if(inviteType && !talkType && eventName){
-    return 'I was '+invite[inviteType]+' to speak at ' + eventName + location(eventLocation)+travelDistance(travelType)+'.';
+    return 'I '+invite[inviteType]+' to speak at ' + eventName + location(eventLocation)+travelDistance(travelType)+'.';
   }else{
     return '';
   }
