@@ -64,18 +64,18 @@ function eventDetail(inviteType,talkType,eventName,eventLocation,travelType){
 
 function travelDistance(travelType, separateSentence, separateSentence2){
   var type ={
-    international:', so I made an international trip to speak',
-    domestic:', so I made a domestic travel to speak',
+    international:', so I travelled internationally to speak',
+    domestic:', so I travelled domestically to speak',
     local:'. This was a local event'
   };
   var type2 ={
-    international:' I made an international trip to speak',
-    domestic:' I made a domestic travel to speak',
+    international:' I travelled internationally to speak',
+    domestic:' I travelled domestically to speak',
     local:' I attended a local event'
   };
   var type3 ={
-    international:'I made an international trip',
-    domestic:'I made a domestic travel',
+    international:'I travelled internationally',
+    domestic:'I travelled domestically',
     local:'I attended a local event'
   };
   if(travelType && separateSentence){
