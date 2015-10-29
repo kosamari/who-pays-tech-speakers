@@ -30,7 +30,7 @@ function init(cb) {
             cb(err, {
               reports: arr,
               count: count,
-              more: pageNum < (Math.ceil(count, postsPerPage))
+              more: pageNum < Math.ceil(count, postsPerPage)
             });
           });
         });
