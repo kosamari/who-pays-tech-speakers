@@ -7,7 +7,7 @@ var favicon = require('serve-favicon');
 var hbs = require('hbs');
 
 var db = require('./db')();
-var report = require('./report')
+var report = require('./report');
 var port = 5070;
 
 var fields = ['invite_type','talk_type','event_name','event_location','travel_type','ticket_type','fee','currency','travel_assistance','travel_assistance_by_employer','time_off','speaking_slot','speaking_slot_unit','prep_time','prep_time_unit','experience','gender','expertise','speaking_years','event_type','additional_info'];
@@ -77,7 +77,7 @@ app.get('/data.csv', function(req, res) {
 
 app.get('/lab/datatable', function(req, res) {
   db.findall(function(err, data) {
-    res.render('datatable', {data:data});
+    res.render('datatable', {data:data,ga:ga});
   });
 });
 
