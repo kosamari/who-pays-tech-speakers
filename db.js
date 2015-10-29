@@ -29,7 +29,8 @@ function init(cb) {
           collection.count(function(err, count) {
             cb(err, {
               reports: arr,
-              count: count
+              count: count,
+              more: pageNum < (Math.ceil(count, postsPerPage))
             });
           });
         });
