@@ -35,7 +35,7 @@
       </header>
       <section>
         <h3 class="center">Speaking at a tech conference can be costly.</h3>
-        <p>We (speakers) love giving talks at technical conferences, but discussions about money are sometimes taboo because we often pretend that passion and exposure should pay the way. While some conferences have <a href="https://remysharp.com/2014/03/07/youre-paying-to-speak">"no budget"</a>, many offer to cover <a href="http://cfp.jsconf.co/events/speaker">travel & accommodations</a> or <a href="https://twitter.com/ashedryden/status/564899600335925248"> pay honorarium</a>.</p>
+        <p>We (speakers) love giving talks at technical conferences, but discussions about money are sometimes taboo because we often pretend that passion and exposure should pay the way. While some conferences have <a href="https://remysharp.com/2014/03/07/youre-paying-to-speak">"no budget"</a>, many offer to cover <a href="http://cfp.jsconf.co/events/speaker">travel & accommodations</a> or <a href="https://twitter.com/ashedryden/status/564899600335925248"> pay honorarium</a>I.</p>
         <p>
         Let’s help each other by sorting through some of the confusion, and develop an ongoing dialog about the cost of public speaking.</p>
         <p align="right"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://whopays.techspeakers.info/" data-text="Who pays conference speakers?" data-dnt="true">Tweet</a>
@@ -48,7 +48,6 @@
         </p>
           <span class="note"><b>Note:</b> Hi! thank for a lot of feedback, I know this form does not account for all possible case of speaking. If you feel like you want to provide more information, please use <em>Also:</em> section at the bottom (no max char limit). I'd love to hear what you loved about particular conference too!
           <br>If you like to add more fields in the form, please submit issue on my <a href="https://github.com/kosamari/who-pays-tech-speakers/issues/new" target="_blank">GitHub</a>.</span>
-        
         <form name="submission">
           <p>
           I 
@@ -117,6 +116,20 @@
           by the event.
           </p>
           <p>
+            I was 
+            <span class="styled-select top-tip" data-tips="Did you attend the event on your time off ?">
+            <select name="time_off">
+              <option value="" ></option>
+              <option value="working">working</option>
+              <option value="paid_timeoff">on my paid time off</option>
+              <option value="unpaid_timeoff">on my unpaid time off</option>
+              <option value="unemployed">unemployed</option>
+              <option value="student">a student</option>
+            </select>
+            </span>
+            while attending the event.
+          </p>
+          <p>
             My employer
             <span class="styled-select top-tip" data-tips="Did your company pay for your travel?">
             <select name="travel_assistance_by_employer">
@@ -126,18 +139,8 @@
               <option value="none">did not cover</option>
             </select>
             </span>
-            my travel expenses. <br>I was 
-            <span class="styled-select top-tip" data-tips="Did you attend the event on your time off ?">
-            <select name="time_off">
-              <option value=""></option>
-              <option value="working">working</option>
-              <option value="paid_timeoff">on my paid time off</option>
-              <option value="unpaid_timeoff">on my unpaid time off</option>
-              <option value="unemployed">unemployed</option>
-              <option value="student">still a student</option>
-            </select>
-            </span>
-            while attending the event.
+            my travel expenses.<br>
+            <span class="note"><em>(if you had someone else support your travel, We'd love to know about it, comment in Also: section if you like.)</em></span>
           </p>
 
           <p>
@@ -178,13 +181,16 @@
               <option value="years">years</option>
               <option value="months">months</option>
             </select></span>
-            <br>The event was
+            </p>
+            <p>The event was
             <span class="styled-select">
               <select name="event_type">
                 <option value=""></option>
                 <option value="not for profit">not for profit</option>
                 <option value="for profit">for profit</option>
               </select></span>
+              
+              <span class="note"><em>(If you don't know, you can leave this empty. All fields are optional!)</em></span>
           </p>
 
           <p>
