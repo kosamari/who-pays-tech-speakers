@@ -196,7 +196,7 @@
           <p>
             Also: <span class="style-input"><input type="text" name="additional_info" id="additional_info" placeholder="Share details to help others understand your experience." /></span>
           </p>
-          <input type="submit" value="Submit" class="submit">
+          <input type="submit" value="Submit" id="submit">
           <span id="message"></span>
         </form>
       </section>
@@ -239,6 +239,8 @@
         if(count<5){
           $msg.html('Please fill out at least one field');
           return
+        }else if(!$('#submit').is(":focus")){
+          return;
         }else{
           $.post( "./submit", $form.serialize()).error(function() {
             $msg.html('Oops! some error! could not send your submission');

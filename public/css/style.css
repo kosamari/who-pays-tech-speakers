@@ -106,7 +106,7 @@ select {
   height: 30px;
 }
 
-.submit {
+#submit {
   font-size: 26px;
   color: white;
   border: 3px solid rgb(255, 255, 255);
@@ -114,7 +114,7 @@ select {
   margin: .5em 0;
   cursor: pointer;
 }
-.submit:hover{
+#submit:hover{
   border: 3px solid orange;
 }
 
