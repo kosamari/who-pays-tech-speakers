@@ -7,13 +7,11 @@ body {
   background-color: #FFFFFF;
   color:#333333;
 }
-
 h1{
   font-family: 'Raleway',sans-serif;
   font-weight: 100;
   font-size: 3em;
 }
-
 h2{
   font-family: 'Raleway',sans-serif;
   font-weight: 100;
@@ -33,64 +31,40 @@ a {
   margin-right: auto;
   background: white;
 }
-
-.blue-font {
-  color:#00B2F2;
-}
 .white-font {
   color:#FFFFFF;
 }
-
 .yellow-shadow{
   text-shadow: 3px 3px #F9C132;
 }
-.pink-shadow{
-  text-shadow: 3px 3px #F8555B;
-}
-.blue-shadow{
-  text-shadow: 3px 3px #49A9B9;
-}
-
 .center{
   text-align: center;
-}
-
-.form{
-  padding:30px;
-  background-color:OldLace;
-}
-form{
-  line-height: 2em;
-}
-.single-title > a{
-  text-decoration: none;
-  color:#333;
-}
-.single-card{
-  padding:30px;
-  background-color:OldLace;
-  line-height: 2em;
-}
-
-.single-card > p.report{
-  font-size: 1.5em;
-  margin-bottom:0px;
-}
-form > p{
-  padding-bottom: 15px;
 }
 
 #headder{
   background: url(/img/header.jpg) repeat top center fixed; 
   height:100px;
 }
-
 footer > p{
   font-size: 16px;
   text-align: center;
 }
 
+/*
+Form Styling
+*/
+.form{
+  padding:30px;
+  background-color:OldLace;
+}
 
+form{
+  line-height: 2em;
+}
+
+form > p{
+  padding-bottom: 15px;
+}
 
 select, input {
   font-size: 20px;
@@ -100,6 +74,7 @@ select, input {
   border-bottom: 2px solid rgb(215, 215, 215);
   background-color: white;
 }
+
 input {
   padding: 0px 10px;
   font-family: "Open Sans", sans-serif;
@@ -111,7 +86,6 @@ input {
   overflow: hidden;
 }
 
-
 .styled-select {
   border-bottom: 2px solid rgb(215, 215, 215);
   background-color: white;
@@ -120,6 +94,7 @@ input {
   overflow: hidden;
   margin-right: 5px;
 }
+
 select {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
@@ -161,43 +136,14 @@ select {
 #additional_info{
   width:770px;
 }
-#report{
-  background: #49A9B9;
-  padding:30px;
-}
 #gender{
   width:100px;
 }
-.report-card{
-  padding-top:30px;
-}
-.report-card > p.report{
-  color:#fff;
-  font-size: 1.5em;
-  margin-top: 80px;
-  margin-bottom:0px;
-}
+
 .note{
   font-size: 0.7em;
 }
-.date{
-  font-size: 0.9em;
-  margin-top:0px;
-  text-align: right;
-}
-.report-card > p.date > a{
-  color:orange;
-  font-weight: 500;
-  /*font-weight: 500;*/
-}
-.showall{
-  font-family: 'Raleway',sans-serif;
-  padding:8px;
-  font-size: 1.1em;
-  background-color: orange;
-  color:white;
-  cursor: pointer;
-}
+
 .autocomplete-suggestions {
   font-size: 20px;
   border: 1px solid #999;
@@ -216,4 +162,62 @@ select {
 .autocomplete-suggestions strong {
   font-weight: normal;
   color: rgb(215, 100, 0);
+}
+
+
+/*
+Report styling
+*/
+#report{
+  background: #49A9B9;
+  padding:30px;
+}
+
+.report-card{
+  padding-top:30px;
+}
+
+.report-card > p.report{
+  color:#fff;
+  font-size: 1.5em;
+  margin-top: 80px;
+  margin-bottom:0px;
+}
+
+.date{
+  font-size: 0.9em;
+  margin-top:0px;
+  text-align: right;
+}
+
+.report-card > p.date > a{
+  color:orange;
+  font-weight: 500;
+}
+
+.showall{
+  font-family: 'Raleway',sans-serif;
+  padding:8px;
+  font-size: 1.1em;
+  background-color: orange;
+  color:white;
+  cursor: pointer;
+}
+
+
+/*
+Individual card page
+*/
+.single-title > a{
+  text-decoration: none;
+  color:#333;
+}
+.single-card{
+  padding:30px;
+  background-color:OldLace;
+  line-height: 2em;
+}
+.single-card > p.report{
+  font-size: 1.5em;
+  margin-bottom:0px;
 }

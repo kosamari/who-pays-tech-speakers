@@ -172,7 +172,7 @@ function timeCommitment(speakingSlot, speakingSlotUnit, prepTime, prepTimeUnit, 
 }
 
 function aboutSpeaker(gender, speakingYears, unit){
-  if(!gender){
+  if(!gender && speakingYears){
     return "I've been speaking for "+ speakingYears + ' ' + checkSingular(speakingYears, unit)+'.';
   }else if(speakingYears){
     return "I'm a "+gender+' who has been speaking for '+ speakingYears + ' ' + checkSingular(speakingYears, unit)+'.';
