@@ -26,7 +26,8 @@ a {
   color:#49A9B9;
 }
 .wrapper{
-  width:900px;
+  width: 80%;
+  padding: 0 10%;
   margin-left: auto;
   margin-right: auto;
   background: white;
@@ -42,8 +43,10 @@ a {
 }
 
 #headder{
-  background: url(/img/header.jpg) repeat top center fixed; 
+  background: url(/img/header.jpg);
   height:100px;
+  background-position: center bottom;
+  background-size: cover;
 }
 footer > p{
   font-size: 16px;
@@ -59,7 +62,7 @@ Form Styling
 }
 
 form{
-  line-height: 2em;
+  line-height: 1.8em;
 }
 
 form > p{
@@ -83,7 +86,7 @@ input {
   background: transparent;
   color: #333;
   margin: 0;
-  overflow: hidden;
+  max-width: 100%;
 }
 
 .styled-select {
@@ -104,6 +107,7 @@ select {
   line-height: 1;
   border: 0;
   height: 30px;
+  max-width: 100%;
 }
 
 #submit {
@@ -113,6 +117,7 @@ select {
   background-color: orange;
   margin: .5em 0;
   cursor: pointer;
+  -webkit-appearance: none;
 }
 #submit:hover{
   border: 3px solid orange;
@@ -130,6 +135,7 @@ select {
 #fee{
   width:60px;
 }
+
 #prep_time{
   width:60px;
 }
@@ -142,6 +148,7 @@ select {
 
 .note{
   font-size: 0.7em;
+  display: inline-block;
 }
 
 .autocomplete-suggestions {
@@ -170,17 +177,17 @@ Report styling
 */
 #report{
   background: #49A9B9;
-  padding:30px;
+  padding: 1.8em;
 }
 
 .report-card{
-  padding-top:30px;
+   padding-top: 2em;
 }
 
 .report-card > p.report{
   color:#fff;
-  font-size: 1.5em;
-  margin-top: 80px;
+  font-size: 1.2em;
+  margin-top: 2.7em;
   margin-bottom:0px;
 }
 
@@ -215,9 +222,20 @@ Individual card page
 .single-card{
   padding:30px;
   background-color:OldLace;
-  line-height: 2em;
+  line-height: 2.4em;
 }
 .single-card > p.report{
   font-size: 1.5em;
   margin-bottom:0px;
+}
+
+
+@media(max-width: 768px){
+  body {
+    font-size: 16px;
+  }
+  .wrapper {
+    width: 94%;
+    padding: 0 3%;
+  }
 }
