@@ -24,6 +24,13 @@ function submissionDate(){
   return date+' '+month +' '+ year;
 }
 
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 /*
 * express server setup
 */
@@ -48,6 +55,9 @@ app.get('/', function(req, res) {
 });
 
 app.post('/submit', function(req, res) {
+  for(var i in req.body) {
+    req.body[i] = escapeHtml(req.body[i]);
+  }
   req.body.report = report.generate(req.body);
   req.body.submitted = submissionDate();
   db.insert(req.body, function(err, data){
