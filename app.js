@@ -76,7 +76,7 @@ app.get('/data.json', function(req, res) {
   });
 });
 
-app.get('/reports/:page', function(req, res) {
+app.get('/reports/:page(\\d+)', function(req, res) {
   res.sendStatus(404);
 });
 
