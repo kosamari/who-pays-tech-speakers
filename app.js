@@ -76,6 +76,10 @@ app.get('/data.json', function(req, res) {
   });
 });
 
+app.get('/reports/:page', function(req, res) {
+  res.sendStatus(404);
+});
+
 app.get('/data.csv', function(req, res) {
   db.findall(function(err, data) {
     json2csv({data: _.shuffle(data), fields: fields, fieldNames: fieldNames}, function(err, csv) {
