@@ -52,8 +52,20 @@
       </table>
       {{> footer}}
       <script>
+      $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null){
+          return null;
+        }
+        else{
+          return results[1] || 0;
+        }
+      }
         $(document).ready(function(){
-          $('#datatable').DataTable();
+          var table = $('#datatable').DataTable();
+          if($.urlParam('search')){
+            table.search(decodeURIComponent($.urlParam('search'))).draw();
+          }
         });
       </script>
       <style type="text/css">
