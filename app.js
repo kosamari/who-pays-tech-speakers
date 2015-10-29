@@ -77,7 +77,9 @@ app.get('/data.json', function(req, res) {
 });
 
 app.get('/reports/:page(\\d+)', function(req, res) {
-  res.sendStatus(404);
+  db.findPage(req.params.page, function(err, data) {
+    res.json(data);
+  });
 });
 
 app.get('/data.csv', function(req, res) {

@@ -22,6 +22,10 @@ function init(cb) {
         });
       }
 
+      methods.findPage = function(pageNum, cb) {
+        cb(null, {a:'b'});
+      };
+
       methods.find = function(id, cb){
         try {
           var objectId = new ObjectID(id);
