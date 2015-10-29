@@ -4,7 +4,8 @@ var format = require('util').format;
 var MONGO_LOC = 'mongodb://127.0.0.1/whopays';
 var log = require('./logger');
 
-module.exports = function() {
+
+function init(cb) {
   var methods = {};
   MongoClient.connect(MONGO_LOC, function(err, db) {
     if(err) {
@@ -40,7 +41,25 @@ module.exports = function() {
           return cb(err, data, datum);
         });
       }
+
+      methods.update = function(id, data, cb){
+        collection.update({_id:id}, data, function(err, d){if(cb){ cb(err,d);}});
+      }
+
+      methods.remove = function(id, cb){
+        collection.remove({_id:id}, function(err, result) {
+          if(cb){ cb();}
+        });
+      }
+      methods.close = function(id, data, cb){
+        db.close();
+        if(cb){ cb();}
+      }
+
+      if(cb){cb();}
     });
   });
   return methods;
 }
+
+exports.init = init;

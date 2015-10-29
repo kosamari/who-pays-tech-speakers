@@ -6,7 +6,8 @@ var _ = require('underscore');
 var favicon = require('serve-favicon');
 var hbs = require('hbs');
 
-var db = require('./db')();
+var db = require('./db').init();
+
 var report = require('./report');
 var port = 5070;
 

@@ -7,7 +7,7 @@ function checkSingular(num, unit){
     months:'month',
     weeks:'week'
   };
-  if(num===1){
+  if(num==='1'){
     return singular[unit];
   }
   return unit;
