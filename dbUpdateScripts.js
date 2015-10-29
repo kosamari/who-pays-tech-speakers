@@ -22,7 +22,7 @@ function removeDerpConf(){
     // remove DDoS posts
     db.findall(function(err, collection){
       async.eachSeries(collection, function(data, cb){
-        if(data.event_name === 'DerpConf'){
+        if(data.event_name === 'DerpConf' || data.additional_info === "<script>alert('lelz')<script>"||data.additional_info === 'asdf'){
           db.remove(data._id, function() {
             cb();
           });
