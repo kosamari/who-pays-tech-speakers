@@ -28,7 +28,9 @@ function submissionDate(){
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
-hbs.registerPartial('ga', fs.readFileSync(__dirname + '/views/ga.html', 'utf8'));
+fs.exists(__dirname + '/views/ga.html', function (exists) {
+  if(exists){ hbs.registerPartial('ga', fs.readFileSync(__dirname + '/views/ga.html', 'utf8')); }
+});
 hbs.registerPartial('footer', fs.readFileSync(__dirname + '/views/footer.html', 'utf8'));
 app.use(express.json());
 app.use(express.urlencoded());
