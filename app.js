@@ -69,6 +69,12 @@ app.get('/data.csv', function(req, res) {
   });
 });
 
+app.get('/lab/datatable', function(req, res) {
+  db.findall(function(err, data) {
+    res.render('datatable', {data:data});
+  });
+});
+
 app.get('/:id', function(req, res, next) {
   db.find(req.params.id, function(err, data) {
     if(err){return notfound(req,res)};

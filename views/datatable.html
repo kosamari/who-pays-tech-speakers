@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Who Pays Speakers?</title>
+
+    <meta property="og:title" content="Who Pays Conference Speakers?">
+    <meta property="og:image" content="http://whopays.techspeakers.info/img/media.jpg"/>
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type='text/javascript' src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/jqc-1.11.3,dt-1.10.9/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/r/dt/jqc-1.11.3,dt-1.10.9/datatables.min.js"></script>
+  </head>
+  <body>
+    <div id="headder"></div>
+    <div class="wrapper">
+      <header id="header">
+      <h2 class="center single-title yellow-shadow"><a href="./">Who Pays Speakers?</a></h2>
+      </header>
+      <table id="datatable" class="stripe hover row-border order-column">
+        <thead>
+          <tr>
+            <th>Report</th>
+            <th>Invite</th>
+            <th>Type</th>
+            <th>Event</th>
+            <th>Location</th>
+            <th>Travel</th>
+            <th>Ticket</th>
+            <th>Honorarium</th>
+            <th>Travel</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each data}}
+          <tr>
+            <td><a href="../{{_id}}">read this</a></td>
+            <td>{{invite_type}}</td>
+            <td>{{talk_type}}</td>
+            <td>{{event_name}}</td>
+            <td>{{event_location}}</td>
+            <td>{{travel_type}}</td>
+            <td>{{ticket_type}}</td>
+            <td>{{fee}}{{#if fee}}{{currency}} {{/if}}</td>
+            <td>{{travel_assistance}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+      {{> footer}}
+      <script>
+        $(document).ready(function(){
+          $('#datatable').DataTable();
+        });
+      </script>
+      <style type="text/css">
+        table{
+          font-size: 16px;
+        }
+        input[type=search]{
+          border: 1px solid #333
+        }
+      </style>
+    </div>
+    {{> ga}}
+  </body>
+</html>
