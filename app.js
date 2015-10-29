@@ -94,15 +94,15 @@ app.get('/lab/datatable', function(req, res) {
 
 app.get('/:id', function(req, res, next) {
   db.find(req.params.id, function(err, data) {
-    if(err){return notfound(req,res);}
+    if(err||data.length===0){ return notfound(req,res);}
     var text = data[0].report.join(' ');
-
     res.render('submission',{
       _id:data[0]._id,
       ga:ga,
       submitted:data[0].submitted,
       report:text,
-      tweet:'"'+text.substr(0,56)+'..." - Who pays conference speakers?'});
+      tweet:'"'+text.substr(0,56)+'..." - Who pays conference speakers?'
+    });
   });
 });
 
