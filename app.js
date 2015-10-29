@@ -76,7 +76,7 @@ app.get('/data.json', function(req, res) {
   });
 });
 
-app.get('/reports/:pageNum(\\d+)', function(req, res) {
+app.get('/reports/page/:pageNum(\\d+)', function(req, res) {
   db.findPage(req.params.pageNum, function(err, data) {
     res.json(data);
   });
