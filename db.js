@@ -36,6 +36,10 @@ function init(cb) {
         });
       };
 
+      methods.findAllEventNames = function(cb) {
+        collection.distinct("event_name", {}, cb);      
+      };
+
       methods.find = function(id, cb){
         try {
           var objectId = new ObjectID(id);

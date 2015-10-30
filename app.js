@@ -82,6 +82,12 @@ app.get('/reports/page/:pageNum(\\d+)', function(req, res) {
   });
 });
 
+app.get('/autoCompleteData', function(req, res) {
+  db.findAllEventNames(function(err, eventNames) {
+    res.json(eventNames);
+  });
+});
+
 app.get('/data.csv', function(req, res) {
   db.findall(function(err, data) {
     json2csv({data: _.shuffle(data), fields: fields, fieldNames: fieldNames}, function(err, csv) {
