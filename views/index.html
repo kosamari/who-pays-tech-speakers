@@ -270,7 +270,7 @@
     function renderReports(){
       var count = data.length;
       $('#report').append(basetemplate({length:data.count}));
-      $('#cards').append(cardtemplate({data:data}));
+      $('#cards').append(cardtemplate({data:data.reports}));
     }
 
     function renderMoreReports(){
@@ -298,7 +298,7 @@
     }
     
     fetchReports(pageNum, function(d) {
-      data = reports;
+      data = d;
       renderReports();
       setupAutoComplete();
       $('#more').on('click', function(){
