@@ -84,7 +84,12 @@ app.get('/reports/page/:pageNum(\\d+)', function(req, res) {
 
 app.get('/autoCompleteData', function(req, res) {
   db.findAllEventNames(function(err, eventNames) {
-    res.json(eventNames);
+    db.findAllEventLocations(function(err1, eventLocations)  {
+      res.json({
+        eventNames: eventNames,
+        eventLocations: eventLocations
+      });
+    });
   });
 });
 

@@ -40,6 +40,10 @@ function init(cb) {
         collection.distinct("event_name", {}, cb);      
       };
 
+      methods.findAllEventLocations = function(cb) {
+        collection.distinct("event_location", {}, cb);      
+      };
+
       methods.find = function(id, cb){
         try {
           var objectId = new ObjectID(id);
