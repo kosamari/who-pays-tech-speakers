@@ -275,9 +275,11 @@
 
     function renderMoreReports(){
       pageNum += 1;
-      fetchReports(pageNum, function(reports) {
-        $('#cards').append(cardtemplate({data:reports}));
-        //$('#more').remove();
+      fetchReports(pageNum, function(d) {
+        $('#cards').append(cardtemplate({data:d.reports}));
+        if (!d.more) {
+          $('#more').remove();
+        }
       });
     }
 
@@ -291,11 +293,11 @@
 
     function fetchReports(pageNum, cb) {
       $.getJSON('/reports/page/' + pageNum, function(d) {
-        cb(d.reports);
+        cb(d);
       });
     }
     
-    fetchReports(pageNum, function(reports) {
+    fetchReports(pageNum, function(d) {
       data = reports;
       renderReports();
       setupAutoComplete();
