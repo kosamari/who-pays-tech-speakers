@@ -263,19 +263,17 @@
       });
 
     var pageNum = 1;
-    var data;
     var basetemplate = _.template($( 'script.base' ).html());
     var cardtemplate = _.template($( 'script.card' ).html());
 
-    function renderReports(){
-      $('#report').append(basetemplate({length:data.count}));
-      $('#cards').append(cardtemplate({data:data.reports}));
+    function renderReports(reports){
+      $('#cards').append(cardtemplate({data:reports}));
     }
 
     function renderMoreReports(){
       pageNum += 1;
       fetchReports(pageNum, function(d) {
-        $('#cards').append(cardtemplate({data:d.reports}));
+        renderReports(d.reports);
         if (!d.more) {
           $('#more').remove();
         }
@@ -283,7 +281,6 @@
     }
 
     function setupAutoComplete(d) {
-      console.log(d);
       $('#event_name').autocomplete({
         lookup: d.eventNames
       });
@@ -305,16 +302,14 @@
       });
     }
     
+    fetchAutocompleteData(setupAutoComplete);
+
     fetchReports(pageNum, function(d) {
-      data = d;
-      renderReports();
+      $('#report').append(basetemplate({length:d.count}));
+      renderReports(d.reports);
       $('#more').on('click', function(){
          renderMoreReports();
       });
-    });
-
-    fetchAutocompleteData(function(d) {
-      setupAutoComplete(d);
     });
 
     </script>
