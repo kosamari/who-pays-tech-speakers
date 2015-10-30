@@ -268,7 +268,6 @@
     var cardtemplate = _.template($( 'script.card' ).html());
 
     function renderReports(){
-      var count = data.length;
       $('#report').append(basetemplate({length:data.count}));
       $('#cards').append(cardtemplate({data:data.reports}));
     }
