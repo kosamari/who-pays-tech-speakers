@@ -181,7 +181,7 @@ function aboutSpeaker(gender, speakingYears, unit){
 }
 function aboutEvent(type){
   if(type){
-    return "This was "+type+' event.';
+    return "This was a "+type+' event.';
   }
   return '';
 }
