@@ -76,6 +76,12 @@ app.get('/data.json', function(req, res) {
   });
 });
 
+app.get('/reports/page/:pageNum(\\d+)', function(req, res) {
+  db.findPage(req.params.pageNum, function(err, data) {
+    res.json(data);
+  });
+});
+
 app.get('/data.csv', function(req, res) {
   db.findall(function(err, data) {
     json2csv({data: _.shuffle(data), fields: fields, fieldNames: fieldNames}, function(err, csv) {
