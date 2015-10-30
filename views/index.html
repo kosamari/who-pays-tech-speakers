@@ -262,20 +262,23 @@
         }
       });
 
-
-    var data, subset, remain;
+    var pageNum = 1;
+    var data;
     var basetemplate = _.template($( 'script.base' ).html());
     var cardtemplate = _.template($( 'script.card' ).html());
 
     function renderReports(){
       var count = data.length;
-      $('#report').append(basetemplate({length:data.length}));
-      $('#cards').append(cardtemplate({data:subset}));
+      $('#report').append(basetemplate({length:data.count}));
+      $('#cards').append(cardtemplate({data:data}));
     }
 
-    function renderAllReports(){
-      $('#cards').append(cardtemplate({data:remain}));
-      $('#more').remove();
+    function renderMoreReports(){
+      pageNum += 1;
+      fetchReports(pageNum, function(reports) {
+        $('#cards').append(cardtemplate({data:reports}));
+        //$('#more').remove();
+      });
     }
 
     function setupAutoComplete(){
@@ -286,18 +289,18 @@
       });
     }
 
-    $.getJSON('data.json', function(d) {
-      data = d;
-      subset = _.sample(data, 6);
-      var subsetIds = _.pluck(subset,'_id');
-      remain = _.filter(data, function(d){
-        if(_.indexOf(subsetIds, d._id)<0){return d;}
+    function fetchReports(pageNum, cb) {
+      $.getJSON('/reports/page/' + pageNum, function(d) {
+        cb(d.reports);
       });
+    }
+    
+    fetchReports(pageNum, function(reports) {
+      data = reports;
       renderReports();
       setupAutoComplete();
-
       $('#more').on('click', function(){
-         renderAllReports();
+         renderMoreReports();
       });
     });
 
