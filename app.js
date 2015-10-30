@@ -107,6 +107,8 @@ app.get('/:id', function(req, res, next) {
       ga:ga,
       submitted:data[0].submitted,
       report:text,
+      edited_by_admin: data[0].edited_by_admin,
+      edit_request_issues:data[0].edit_request_issues,
       tweet:'"'+text.substr(0,56)+'..." - Who pays conference speakers?'
     });
   });

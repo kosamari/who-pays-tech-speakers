@@ -218,13 +218,20 @@
     <script type="text/template" class="card">
       <% _.each(data, function(d) { %>
         <section class='report-card'>
-          <p class="report"><% _.each(d.report, function(r) { if(r){ %> <%= r %><% };}); %> </p>
-          <p class="date"><a href="./<%= d._id %>"><em>Submitted in <%= d.submitted %></em></a></p>
+          <p class="report">
+            <% _.each(d.report, function(r) { if(r){ %> <%= r %><% };}); %>
+          </p>
+          <p class="date">
+            <% if(d.edited_by_admin){%>
+              <span class="note white-font">* this report was edited</span><br>
+            <% }%>
+            <a href="./<%= d._id %>"><em>Submitted in <%= d.submitted %></em></a>
+          </p>
         </section>
       <% }); %>
     </script>
 
-          <script>
+    <script>
       // form submission
       var $form = $('form');
       var $msg = $('#message')
