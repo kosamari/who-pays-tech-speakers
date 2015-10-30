@@ -90,7 +90,7 @@ app.get('/autoCompleteData', function(req, res) {
   ], function(err, results) {
     res.json({
       eventNames: results[0],
-      eventlocations: results[1]
+      eventLocations: results[1]
     });
   });
 });

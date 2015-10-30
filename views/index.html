@@ -282,11 +282,14 @@
       });
     }
 
-    function setupAutoComplete(){
-      ['event_name', 'event_location'].forEach(function(x) {
-        $('#'+x).autocomplete({
-            lookup: _.uniq(_.compact(_.pluck(data, x)))
-        });
+    function setupAutoComplete(d) {
+      console.log(d);
+      $('#event_name').autocomplete({
+        lookup: d.eventNames
+      });
+
+      $('#event_location').autocomplete({
+        lookup: d.eventLocations
       });
     }
 
@@ -295,14 +298,23 @@
         cb(d);
       });
     }
+
+    function fetchAutocompleteData(cb) {
+      $.getJSON('/autocompleteData', function(d) {
+        cb(d);
+      });
+    }
     
     fetchReports(pageNum, function(d) {
       data = d;
       renderReports();
-      setupAutoComplete();
       $('#more').on('click', function(){
          renderMoreReports();
       });
+    });
+
+    fetchAutocompleteData(function(d) {
+      setupAutoComplete(d);
     });
 
     </script>
