@@ -22,6 +22,20 @@ function init(cb) {
         });
       }
 
+      methods.findPage = function(pageNum, cb) {
+        var postsPerPage = 1;
+        collection.find().skip(postsPerPage * (pageNum - 1)).limit(postsPerPage).toArray(function(err, arr) {
+          if (err) return cb(err);
+          collection.count(function(err, count) {
+            cb(err, {
+              reports: arr,
+              count: count,
+              more: pageNum < Math.ceil(count, postsPerPage)
+            });
+          });
+        });
+      };
+
       methods.find = function(id, cb){
         try {
           var objectId = new ObjectID(id);
