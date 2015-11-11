@@ -30,10 +30,18 @@ function init(cb) {
             cb(err, {
               reports: arr,
               count: count,
-              more: pageNum < Math.ceil(count, postsPerPage)
+              more: pageNum < Math.ceil(count / postsPerPage)
             });
           });
         });
+      };
+
+      methods.findAllEventNames = function(cb) {
+        collection.distinct("event_name", {}, cb);      
+      };
+
+      methods.findAllEventLocations = function(cb) {
+        collection.distinct("event_location", {}, cb);      
       };
 
       methods.find = function(id, cb){
