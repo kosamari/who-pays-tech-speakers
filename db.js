@@ -23,7 +23,7 @@ function init(cb) {
       }
 
       methods.findPage = function(pageNum, cb) {
-        var postsPerPage = 1;
+        var postsPerPage = 5;
         collection.find().skip(postsPerPage * (pageNum - 1)).limit(postsPerPage).toArray(function(err, arr) {
           if (err) return cb(err);
           collection.count(function(err, count) {

@@ -198,7 +198,7 @@
           <p>
             Also: <span class="style-input"><input type="text" name="additional_info" id="additional_info" placeholder="Share details to help others understand your experience." /></span>
           </p>
-          <input type="submit" value="Submit" id="submit">
+          <input type="button" value="Submit" id="submit">
           <span id="message"></span>
         </form>
       </section>
@@ -234,8 +234,9 @@
     <script>
       // form submission
       var $form = $('form');
+      var $submit = $('#submit');
       var $msg = $('#message')
-      $form.on('submit', function(e){
+      $submit.on('click', function(e){
         e.preventDefault();
         var data = $form.serializeArray()
         var count = data.map(function(d){
@@ -248,16 +249,16 @@
         if(count<5){
           $msg.html('Please fill out at least one field');
           return
-        }else if(!$('#submit').is(":focus")){
-          return;
         }else{
           $.post( "./submit", $form.serialize()).error(function() {
             $msg.html('Oops! some error! could not send your submission');
+            return;
           }).success(function(data){
             $msg.html('Thanks for sharing! <a href="/'+data.id+'">This submission</a> was anonymously added to the database.');
             $form.each(function(){
               this.reset();
             });
+            return;
           });
         }
       });
