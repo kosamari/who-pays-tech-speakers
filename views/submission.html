@@ -11,12 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Raleway:700,900' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:700,900" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel='stylesheet' href='css/css3-tips.css' />
-    <script type='text/javascript' src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-    <script type='text/javascript' src="javascript/jquery.autocomplete.min.js"></script>
+    <link rel="stylesheet" href="css/css3-tips.css" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+    <script type="text/javascript" src="javascript/jquery.autocomplete.min.js"></script>
   </head>
   <body>
     <div id="headder"></div>
@@ -24,7 +24,7 @@
       <header id="header">
       <h2 class="center single-title yellow-shadow"><a href="./">Who Pays Speakers?</a></h2>
       </header>
-      <section class='single-card'>
+      <section class="single-card">
         <p class="report">{{ report }}</p>
         <p class="date">
         <a href="./{{_id}}"><em>Submitted in {{ submitted }}</em></a><br>
@@ -42,8 +42,6 @@
 
       {{> footer}}
     </div>
-    {{#if ga}}
-      {{> ga }}
-    {{/if}}
+    {{> ga }}
   </body>
 </html>

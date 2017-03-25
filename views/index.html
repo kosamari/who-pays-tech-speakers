@@ -22,12 +22,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Raleway:700,900' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Raleway:700,900' rel='stylesheet' type='text/css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel='stylesheet' href='css/css3-tips.css' />
-    <script type='text/javascript' src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-    <script type='text/javascript' src="javascript/jquery.autocomplete.min.js"></script>
+    <link rel="stylesheet" href="css/css3-tips.css" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+    <script type="text/javascript" src="javascript/jquery.autocomplete.min.js"></script>
   </head>
   <body>
     <div id="headder"></div>
@@ -205,33 +205,32 @@
         </form>
       </section>
 
-      <section id="report"></section>
+      <section id="report">
+      {{#if posts}}
+        <h2 class="white-font">Learn from the experience of others</h2>
+        <p class="white-font">Here are a few reports. If you like to know more, click "Show More" for {{length}} reports.</p>
+        <p class="white-font">If you like to see raw data, here is raw <a class="white-font" href="data.json">JSON</a> or <a class="white-font" href="data.csv">CSV</a> of a dataset. Or check out <a class="white-font" href="/lab/datatable">data table</a>.</p>
+        <div id='cards'>
+          {{#each posts}}
+            <section class='report-card'>
+              <p class="report">
+                {{report}}
+              </p>
+              <p class="date">
+                {{#if edited_by_admin}}
+                  <span class="note white-font">* this report was edited</span><br>
+                {{/if}}
+                <a href="./{{_id}}"><em>Submitted in {{submitted}}</em></a>
+              </p>
+            </section>
+          {{/each}}
+        </div>
+        <p class="center showall" id="more">Show More</p>
+      {{/if}}
+      </section>
 
       {{> footer}}
     </div>
-
-    <script type="text/template" class="base">
-    <h2 class="white-font">Learn from the experience of others</h2>
-      <p class="white-font">Here are a few reports. If you like to know more, click "Show More" for <%= length %> reports.</p>
-      <p class="white-font">If you like to see raw data, here is raw <a class="white-font" href="data.json">JSON</a> or <a class="white-font" href="data.csv">CSV</a> of a dataset. Or check out <a class="white-font" href="/lab/datatable">data table</a>.</p>
-      <div id='cards'></div>
-      <p class="center showall" id="more">Show More</p>
-    </script>
-    <script type="text/template" class="card">
-      <% _.each(data, function(d) { %>
-        <section class='report-card'>
-          <p class="report">
-            <% _.each(d.report, function(r) { if(r){ %> <%= r %><% };}); %>
-          </p>
-          <p class="date">
-            <% if(d.edited_by_admin){%>
-              <span class="note white-font">* this report was edited</span><br>
-            <% }%>
-            <a href="./<%= d._id %>"><em>Submitted in <%= d.submitted %></em></a>
-          </p>
-        </section>
-      <% }); %>
-    </script>
 
     <script>
       // form submission
@@ -265,72 +264,67 @@
         }
       });
 
-    var pageNum = 1;
-    var basetemplate = _.template($( 'script.base' ).html());
-    var cardtemplate = _.template($( 'script.card' ).html());
+      var pageNum = 1;
 
-    function renderReports(reports){
-      $('#cards').append(cardtemplate({data:reports}));
-    }
+      function renderReports(reports){
+        reports.forEach(function (report) {
+          var editedBy = report.edited_by_admin ? '<span class="note white-font">* this report was edited</span><br>' : ''
+          var template = '<section class="report-card"><p class="report">' + report.report + '</p> <p class="date">' + editedBy + '<a href="./' + report._id + '"><em>Submitted in ' + report.submitted + '</em></a></p></section>'
+          $('#cards').append(template);
+        })
+      }
 
-    function renderMoreReports(){
-      pageNum += 1;
-      fetchReports(pageNum, function(d) {
-        renderReports(d.reports);
-        if (!d.more) {
-          $('#more').remove();
-        }
-      });
-    }
+      function renderMoreReports(){
+        pageNum += 1;
+        fetchReports(pageNum, function(d) {
+          renderReports(d.reports);
+          if (!d.more) {
+            $('#more').remove();
+          }
+        });
+      }
 
-    function setupAutoComplete(d) {
-      $('#event_name').autocomplete({
-        lookup: d.eventNames
-      });
+      function setupAutoComplete(d) {
+        $('#event_name').autocomplete({
+          lookup: d.eventNames
+        });
 
-      $('#event_location').autocomplete({
-        lookup: d.eventLocations
-      });
-    }
+        $('#event_location').autocomplete({
+          lookup: d.eventLocations
+        });
+      }
 
-    function fetchReports(pageNum, cb) {
-      $.getJSON('/reports/page/' + pageNum, function(d) {
-        cb(d);
-      });
-    };
+      function fetchReports(pageNum, cb) {
+        $.getJSON('/reports/page/' + pageNum, function(d) {
+          cb(d);
+        });
+      };
 
-    function scrollToTarget(target) {
-        var offset = Math.floor($(target).position().top) + 'px';
-        return function scrollFn() {
-          $('body, html').animate({
-            scrollTop: offset
-          });
-        }
-    }
+      function scrollToTarget(target) {
+          var offset = Math.floor($(target).position().top) + 'px';
+          return function scrollFn() {
+            $('body, html').animate({
+              scrollTop: offset
+            });
+          }
+      }
 
-    function fetchAutocompleteData(cb) {
-      $.getJSON('/autocompleteData', function(d) {
-        cb(d);
-      });
-    }
+      function fetchAutocompleteData(cb) {
+        $.getJSON('/autocompleteData', function(d) {
+          cb(d);
+        });
+      }
 
-    fetchAutocompleteData(setupAutoComplete);
-
-    fetchReports(pageNum, function(d) {
-      $('#report').append(basetemplate({length:d.count}));
-      renderReports(d.reports);
+      fetchAutocompleteData(setupAutoComplete);
       $('#more').on('click', function(){
          renderMoreReports();
       });
-    });
 
-    $(document).ready(function documentLoaded(){
-      var scrollToReport = scrollToTarget('#report');
-      $('.experience-bttn').click(scrollToReport);
-    });
+      $(document).ready(function documentLoaded(){
+        var scrollToReport = scrollToTarget('#report');
+        $('.experience-bttn').click(scrollToReport);
+      });
     </script>
-    {{#if ga}}
-      {{> ga }}
-    {{/if}}
+    {{> ga }}
   </body>
 </html>

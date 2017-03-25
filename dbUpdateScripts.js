@@ -1,98 +1,73 @@
-var async = require('async');
 var report = require('./report');
-var log = require('./logger');
+
+var admin = require('firebase-admin')
+var serviceAccount = require('./serviceAccountKey.json')
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://whopays-522bd.firebaseio.com'
+})
+var db = admin.database()
 
 function generateReports(){
-  var db = require('./db').init(function(){
-    // re-generate reports
-    db.findall(function(err, collection){
-      async.eachSeries(collection, function(data, cb){
-        data.report = report.generate(data);
-        db.update(data._id, data, function(err, result){
-          cb();
-        });
-      }, function done(err, results){
-          db.close();
-      });
-    });
-  });
+  var ref = db.ref('posts')
+  ref.once('value', function (snapshot) {
+    var data = snapshot.val()
+    for (var i in data) {
+      data[i].report = report.generate(data[i])
+      ref.child(i).set(data[i])
+    }
+  }, function () {
+    console.log('[generateReports] : Error getting posts')
+  })
 }
 
 function generateOneReport(id){
-  var db = require('./db').init(function(){
-  // re-generate reports
-  db.find(id, function(err, data){
-      if(err || data.length===0){ return;}
-      data[0].report = report.generate(data[0]);
-      db.update(data[0]._id, data[0], function(err, result){
-        db.close();
-      });
-    });
-  });
+  var ref = db.ref('posts/' + id)
+  ref.once('value', function (snapshot) {
+    var data = snapshot.val()
+    console.log(data)
+    console.log(report.generate(data))
+    data.report = report.generate(data)
+    ref.set(data)
+  }, function () {
+    console.log('[generateOneReport] : Error getting post')
+  })
 }
 
 function updateItem(id, key, val, reason, issueID){
-  if(!id||!key||!val||!reason){ console.log('please pass all 4 arg'); return;}
-  var db = require('./db').init(function(){
-    db.find(id, function(err, data){
-      if(err || data.length===0){ return;}
-      data[0][key] = val;
-      data[0].edited_by_admin = true;
-      if(!data[0].edit_request_issues){
-        data[0].edit_request_issues = [];
-      }
-      data[0].edit_request_issues.push(issueID);
-      if(!data[0].edit_notes){
-        data[0].edit_notes = [];
-      }
-      data[0].edit_notes.push({
-        timestam: new Date(),
-        key:key,
-        value:val,
-        reason: reason
-      });
-      db.update(data[0]._id, data[0], function(err, result){
-        db.close();
-      });
-    });
-  });
-}
+  if(!id||!key||!val||!reason||!issueID){ console.log('please pass all 4 arg'); return;}
 
-function removeDerpConf(){
-  var db = require('./db').init(function(){
-    // remove DDoS posts
-    db.findall(function(err, collection){
-      async.eachSeries(collection, function(data, cb){
-        if(data.event_name === 'DerpConf' || data.additional_info === "<script>alert('lelz')<script>"||data.additional_info === 'asdf' || data.additional_info === "<script>alert('sup')</script>"){
-          db.remove(data._id, function() {
-            log.info('removed: ' + JSON.stringify(data));
-            cb();
-          });
-        }else{
-          cb();
-        }
-      }, function done(err, results){
-          db.close();
-      });
-    });
-  });
+  var ref = db.ref('posts/' + id)
+  ref.once('value', function (snapshot) {
+    var data = snapshot.val()
+    data[key] = val;
+    data.edited_by_admin = true;
+
+    if(!data.edit_request_issues){
+      data.edit_request_issues = [];
+    }
+    data.edit_request_issues.push(issueID);
+    if(!data.edit_notes){
+      data.edit_notes = [];
+    }
+    data.edit_notes.push({
+      timestamp: new Date().toISOString(),
+      key: key,
+      value: val,
+      reason: reason,
+      issueID: issueID
+    })
+    ref.set(data)
+  }, function () {
+    console.log('[generateOneReport] : Error getting post')
+  })
 }
 
 function removeById(id){
-  var db = require('./db').init(function(){
-    // remove specific post
-    db.find(id, function(err, data){
-      if(err || data.length===0){ return;}
-      db.remove(data[0]._id, function(err, res) {
-        log.info('removed: ' + JSON.stringify(data));
-        db.close();
-      });
-    });
-  });
+  db.ref('posts').child(id).remove()
 }
 
 exports.generateReports = generateReports;
 exports.generateOneReport = generateOneReport;
 exports.updateItem = updateItem;
-exports.removeDerpConf = removeDerpConf;
 exports.removeById = removeById;
