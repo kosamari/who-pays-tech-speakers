@@ -73,7 +73,6 @@ app.get('/', function (req, res) {
 app.post('/submit', function (req, res) {
   var ref = db.ref('posts').push()
   req.body._id = ref.key
-
   for (var i in req.body) {
     req.body[i] = escapeHtml(req.body[i])
   }
@@ -83,9 +82,9 @@ app.post('/submit', function (req, res) {
   ref.set(req.body).then(function () {
     updateIndex()
     res.send({id: ref.key})
-  }).catch(
+  }, function() {
     notfound(req, res)
-  )
+  })
 })
 
 app.get('/data.json', function (req, res) {
