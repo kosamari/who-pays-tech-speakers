@@ -37,8 +37,6 @@ function generateOneReport (id) {
   var ref = db.ref('posts/' + id)
   ref.once('value', function (snapshot) {
     var data = snapshot.val()
-    console.log(data)
-    console.log(report.generate(data))
     data.report = report.generate(data)
     ref.set(data)
   }, function () {

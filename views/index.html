@@ -214,7 +214,7 @@
           {{#each posts}}
             <section class='report-card'>
               <p class="report">
-                {{report}}
+                {{join report delimiter=" " }}
               </p>
               <p class="date">
                 {{#if edited_by_admin}}
@@ -269,7 +269,7 @@
       function renderReports(reports){
         reports.forEach(function (report) {
           var editedBy = report.edited_by_admin ? '<span class="note white-font">* this report was edited</span><br>' : ''
-          var template = '<section class="report-card"><p class="report">' + report.report + '</p> <p class="date">' + editedBy + '<a href="./' + report._id + '"><em>Submitted in ' + report.submitted + '</em></a></p></section>'
+          var template = '<section class="report-card"><p class="report">' + report.report.join(' ') + '</p> <p class="date">' + editedBy + '<a href="./' + report._id + '"><em>Submitted in ' + report.submitted + '</em></a></p></section>'
           $('#cards').append(template);
         })
       }

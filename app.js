@@ -53,6 +53,11 @@ function updateIndex () {
 app.set('view engine', 'html')
 app.engine('html', hbs.__express)
 app.use(favicon(path.join(__dirname, '/public/img/favicon.ico')))
+hbs.registerHelper('join', function (els, options) {
+  return new hbs.SafeString(
+    els.join(options.hash['delimiter'])
+  )
+})
 hbs.registerPartial('ga', fs.readFileSync(path.join(__dirname, '/views/ga.html'), 'utf8'))
 hbs.registerPartial('footer', fs.readFileSync(path.join(__dirname, '/views/footer.html'), 'utf8'))
 app.use(express.json())
