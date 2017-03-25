@@ -1,5 +1,5 @@
-var report = require('./report');
-
+var _ = require('underscore')
+var report = require('./report')
 var admin = require('firebase-admin')
 var serviceAccount = require('./serviceAccountKey.json')
 admin.initializeApp({
@@ -8,7 +8,19 @@ admin.initializeApp({
 })
 var db = admin.database()
 
-function generateReports(){
+function importFromMongoDump (filepath) {
+  var data = require(filepath)
+  data.forEach(function (d) {
+    db.ref('posts/' + d._id).set(d)
+  })
+  db.ref('posts').once('value', function (snapshot) {
+    var data = _.toArray(snapshot.val())
+    db.ref('events').set(_.uniq(_.pluck(data, 'event_name')))
+    db.ref('locations').set(_.uniq(_.pluck(data, 'event_location')))
+  })
+}
+
+function generateReports () {
   var ref = db.ref('posts')
   ref.once('value', function (snapshot) {
     var data = snapshot.val()
@@ -21,7 +33,7 @@ function generateReports(){
   })
 }
 
-function generateOneReport(id){
+function generateOneReport (id) {
   var ref = db.ref('posts/' + id)
   ref.once('value', function (snapshot) {
     var data = snapshot.val()
@@ -34,21 +46,21 @@ function generateOneReport(id){
   })
 }
 
-function updateItem(id, key, val, reason, issueID){
-  if(!id||!key||!val||!reason||!issueID){ console.log('please pass all 4 arg'); return;}
+function updateItem (id, key, val, reason, issueID) {
+  if (!id || !key || !val || !reason || !issueID) { console.log('please pass all 4 arg'); return }
 
   var ref = db.ref('posts/' + id)
   ref.once('value', function (snapshot) {
     var data = snapshot.val()
-    data[key] = val;
-    data.edited_by_admin = true;
+    data[key] = val
+    data.edited_by_admin = true
 
-    if(!data.edit_request_issues){
-      data.edit_request_issues = [];
+    if (!data.edit_request_issues) {
+      data.edit_request_issues = []
     }
-    data.edit_request_issues.push(issueID);
-    if(!data.edit_notes){
-      data.edit_notes = [];
+    data.edit_request_issues.push(issueID)
+    if (!data.edit_notes) {
+      data.edit_notes = []
     }
     data.edit_notes.push({
       timestamp: new Date().toISOString(),
@@ -63,11 +75,12 @@ function updateItem(id, key, val, reason, issueID){
   })
 }
 
-function removeById(id){
+function removeById (id) {
   db.ref('posts').child(id).remove()
 }
 
-exports.generateReports = generateReports;
-exports.generateOneReport = generateOneReport;
-exports.updateItem = updateItem;
-exports.removeById = removeById;
+exports.importFromMongoDump = importFromMongoDump
+exports.generateReports = generateReports
+exports.generateOneReport = generateOneReport
+exports.updateItem = updateItem
+exports.removeById = removeById
